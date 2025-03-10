@@ -29,3 +29,25 @@
  <p>
 	첫째 줄에 입력으로 주어진 단어에서 대문자는 소문자로, 소문자는 대문자로 바꾼 단어를 출력한다.</p>
 
+### 정리
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/ASCII-Table-wide.svg" />
+
+- 알파벳 대문자 : 'A'(65) ~ 'Z'(90)
+- 알파벳 소문자 : 'a'(97) ~ 'z'(122)
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        char[] ans = str.toCharArray();
+        for (int i = 0; i < ans.length; i++) {
+            if ('A' <= ans[i] && ans[i] <= 'Z') ans[i] = (char)('a' + ans[i] - 'A');
+            else ans[i] = (char)('A' + ans[i] - 'a');
+        }
+        System.out.println(ans);
+    }
+}
+```
