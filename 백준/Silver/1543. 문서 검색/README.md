@@ -28,3 +28,22 @@
 
  <p>첫째 줄에 중복되지 않게 최대 몇 번 등장하는지 출력한다.</p>
 
+### 정리
+
+```Java
+import java.util.Scanner;
+
+public class Main {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String doc = sc.nextLine();
+        String word = sc.nextLine();
+
+        String replaced = doc.replace(word, "");
+        int length = doc.length() - replaced.length();
+        int count = length / word.length();
+
+        System.out.println(count);
+    }
+}
+```
