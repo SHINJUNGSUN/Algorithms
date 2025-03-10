@@ -32,3 +32,37 @@
 
  <p>로봇팔이 소금을 투하할때까지 필요한 시간을 hh:mm:ss로 출력한다. 이 시간은 1초보다 크거나 같고, 24시간보다 작거나 같다.</p>
 
+### 정리
+
+```Java
+import java.util.Scanner;
+
+public class Main {
+    public static int getTimes(String str) {
+        String[] strUnit = str.split(":");
+        int hour = Integer.parseInt(strUnit[0]);
+        int minute = Integer.parseInt(strUnit[1]);
+        int second = Integer.parseInt(strUnit[2]);
+        return hour * 3600 + minute * 60 + second;
+    }
+
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String current = sc.nextLine();
+        String drop = sc.nextLine();
+
+        int currentSecondAmount = getTimes(current);
+        int dropSecondAmount = getTimes(drop);
+
+        int needSecondAmount = dropSecondAmount - currentSecondAmount;
+        if(needSecondAmount <= 0)
+            needSecondAmount += 24 * 3600;
+
+        int needHour = needSecondAmount / 3600;
+        int needMinute = (needSecondAmount % 3600) / 60;
+        int needSecond = needSecondAmount % 60;
+
+        System.out.printf("%02d:%02d:%02d", needHour, needMinute, needSecond);
+    }
+}
+```
