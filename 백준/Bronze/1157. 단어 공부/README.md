@@ -26,3 +26,40 @@
 
  <p>첫째 줄에 이 단어에서 가장 많이 사용된 알파벳을 대문자로 출력한다. 단, 가장 많이 사용된 알파벳이 여러 개 존재하는 경우에는 ?를 출력한다.</p>
 
+### 정리
+
+```Java
+import java.util.Scanner;
+
+public class Main {
+    public static int getAlphabetCount(String str, char alp) {
+        int count = 0;
+        for (char ch : str.toCharArray()) {
+            if (alp == ch) count++;
+        }
+        return count;
+    }
+
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next().toUpperCase();
+
+        int maxCount = -1;
+        char maxAlphabet = '?';
+        for (char alp = 'A'; alp <= 'Z'; alp++) {
+            int count = getAlphabetCount(str, alp);
+            if(count > maxCount) {
+                maxCount = count;
+                maxAlphabet = alp;
+            } else if (count == maxCount) {
+                maxAlphabet = '?';
+            }
+        }
+
+        System.out.println(maxAlphabet);
+    }
+}
+```
+
+- Java Collection을 활용한 풀이도 가능.
+- 시간복잡도를 고려해야 함.
