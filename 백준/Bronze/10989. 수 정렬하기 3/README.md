@@ -29,3 +29,5 @@
 ### 정리
 - Scanner와 System.out.print 계열 함수는 상대적으로 느림
 - BufferedReader와 BufferedWriter를 활용
+- 입력 속도 비교: http://www.acmicpc.net/blog/view/56
+- 출력 속도 비교: http://www.acmicpc.net/blog/view/57
