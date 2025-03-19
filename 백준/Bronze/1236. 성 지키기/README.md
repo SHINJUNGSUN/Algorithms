@@ -28,3 +28,47 @@
 
  <p>첫째 줄에 추가해야 하는 경비원의 최솟값을 출력한다.</p>
 
+### 정리
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        char[][] map = new char[N][M];
+        for (int i = 0; i < N; i++) {
+            map[i] = sc.next().toCharArray();
+        } // O(N * M)
+
+        // 1. 각 행/열에 대해 경비원이 있는지 확인한다.
+        boolean[] existRow = new boolean[N];
+        boolean[] existCol = new boolean[M];
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < M; c++) {
+                if (map[r][c] == 'X') {
+                    existRow[r] = true;
+                    existCol[c] = true;
+                }
+            }
+        } // O(N * M)
+
+        // 2. 보호받지 못하는 행/열의 개수를 구한다.
+        int needRowCount = N;
+        int needColCount = M;
+        for (int r = 0; r < N; r++) {
+            if (existRow[r]) needRowCount--;
+        } // O(N)
+        for (int c = 0; c < M; c++) {
+            if (existCol[c]) needColCount--;
+        } // O(M)
+
+        // 시간복잡도 : O(N * M) + O(N * M) + O(N) + O(M) => O(NM)
+
+        // 3. 둘 중 큰 값을 출력한다.
+        System.out.println(Math.max(needRowCount, needColCount));
+    }
+}
+```
