@@ -26,3 +26,6 @@
 
  <p>첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.</p>
 
+### 정리
+- Scanner와 System.out.print 계열 함수는 상대적으로 느림
+- BufferedReader와 BufferedWriter를 활용
